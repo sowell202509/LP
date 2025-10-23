@@ -2,72 +2,80 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>秋月ヒーリングセラピー｜完全予約制（1週間前まで）</title>
 <meta name="description" content="秋月の自然に包まれる静かなヒーリングセラピー。ご予約は実施日の1週間前まで。">
 
 <style>
 /* ===== Base / Layout ===== */
 *,*::before,*::after{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Noto Sans JP",sans-serif;line-height:1.75;color:#1f2328;background:#fff}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2{line-height:1.25;margin:0 0 .5em}
+p,ul{margin:.8em 0}
 :root{
   --line:#e7e7e7; --muted:#606770; --accent:#1e4d3e;
   --w:max(72ch, min(92vw, 760px));
   --space:clamp(16px,2.8vw,24px);
   --space-lg:clamp(40px,7vw,80px);
 }
-html{scroll-behavior:smooth}
-body{margin:0;font-family:system-ui,-apple-system,"Noto Sans JP",sans-serif;line-height:1.75;color:#1f2328;background:#fff}
-img{max-width:100%;height:auto;display:block}
-a{color:inherit;text-decoration:none}
-h1,h2{line-height:1.25;margin:0 0 .5em}
-p,ul{margin:.8em 0}
 .wrap{width:var(--w);margin-inline:auto;padding-inline:var(--space)}
-
 header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:10}
-.head{display:flex;align-items:center;justify-content:space-between;min-height:56px;height:auto;padding-block:6px;gap:8px}
-.brand{font-weight:700;letter-spacing:.04em;font-size:16px;line-height:1.2;max-width:40vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cta-head{display:inline-block;background:#1e4d3e;color:#fff;padding:.55rem .9rem;border-radius:999px;font-weight:700;font-size:14.5px;line-height:1;white-space:nowrap;max-width:60vw;text-align:center}
-
-main section{padding:var(--space-lg) 0;border-bottom:1px solid var(--line);scroll-margin-top:86px}
+.head{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{font-weight:700;letter-spacing:.04em}
+.cta-head{display:inline-block;background:#1e4d3e;color:#fff;padding:.7rem 1rem;border-radius:999px;font-weight:700}
+main section{padding:var(--space-lg) 0;border-bottom:1px solid var(--line);scroll-margin-top:74px}
 .lead{color:var(--muted)}
 .btn{display:inline-block;background:#1e4d3e;color:#fff;padding:.9rem 1.2rem;border-radius:10px;font-weight:700}
 .btn-ghost{display:inline-block;background:transparent;color:#1e4d3e;padding:.5rem .6rem;border-radius:8px;border:1px solid #cfe0d9}
-.btn-ghost.white{color:#fff;border-color:rgba(255,255,255,.6)}
 .cta-inline{margin-top:.6rem}
 .list{padding-left:1.1em}
 h1{font-size:clamp(24px,4.8vw,40px)} h2{font-size:clamp(20px,3.6vw,28px)}
 footer{padding:var(--space-lg) 0;color:#7a7f86}
 
-/* ===== Hero（軽量：サムネ＋テキスト。再生は下ボタン） ===== */
-.hero-video{
-  position:relative; border-radius:16px; overflow:hidden; background:#000; margin-top:var(--space);
-  /* Safari角丸にじみ対策 */
-  -webkit-mask-image: -webkit-radial-gradient(white, black);
-  clip-path: inset(0 round 16px);
+/* ===== Hero (静止画像) ===== */
+.hero{
+  border-radius:16px; overflow:hidden; box-shadow:0 8px 24px rgba(0,0,0,.06);
+  background:#000; aspect-ratio:16/9; position:relative; margin-top:var(--space);
 }
-/* アスペクト維持（16:9） */
-.hero-video::before{ content:""; display:block; padding-top:56.25%; }
-/* レイヤー（下→上） */
-.hero-thumb{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:inherit; z-index:1 }
-.hero-overlay{ position:absolute; inset:0; border-radius:inherit; z-index:2; pointer-events:none;
-  background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.3) 40%,rgba(0,0,0,.55) 100%);
+.hero img{width:100%;height:100%;object-fit:cover;filter:saturate(1.02)}
+.hero::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.25) 40%, rgba(0,0,0,.55) 100%);
 }
-.hero-copy{ position:absolute; inset:0; z-index:3; display:flex; flex-direction:column; justify-content:center; gap:12px;
+.hero-copy{
+  position:absolute; inset:0; display:grid; align-content:center; gap:12px;
   padding:clamp(16px,4vw,40px); color:#fff; text-shadow:0 2px 12px rgba(0,0,0,.35);
 }
-.hero-copy h1{ font-size:clamp(26px,5vw,42px); margin:0 0 .25em }
+.hero-copy h1{font-size:clamp(26px,5vw,42px); margin:0 0 .25em}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
 
-/* ===== ヒーロー直下の動画操作ボタン ===== */
-.hero-actions{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; padding-top:8px; padding-bottom:4px }
-.hero-actions .btn, .hero-actions .btn-ghost{ min-height:48px; padding:.85rem 1.1rem }
-@media (max-width:480px){ .hero-actions .btn, .hero-actions .btn-ghost{ flex:1 } }
+/* ===== Independent Video (軽量クリック再生) ===== */
+.video-card{
+  border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#000;
+  aspect-ratio:16/9; position:relative;
+}
+.video-card img{width:100%;height:100%;object-fit:cover}
+.yt-play{
+  position:absolute; inset:0; margin:auto; width:72px;height:72px;border:0;border-radius:50%;
+  background:rgba(0,0,0,.55); color:#fff; font-size:28px; display:grid; place-items:center;
+  box-shadow:0 8px 24px rgba(0,0,0,.25); cursor:pointer;
+}
+.yt-iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+.yt-play:focus-visible{outline:2px solid #fff; outline-offset:3px}
 
 /* ===== Gallery ===== */
-.gallery{display:grid;gap:12px;grid-template-columns:repeat(2,1fr);margin-top:12px}
-.gallery figure{margin:0}
-.gallery img{width:100%;border-radius:12px;border:1px solid var(--line);aspect-ratio:4/3;object-fit:cover;transition:transform .2s ease}
-.gallery img:hover{transform:translateY(-2px)}
-.gallery figcaption{color:var(--muted);font-size:.95rem;margin-top:.35rem}
+.gallery{
+  display:grid; gap:12px; grid-template-columns:repeat(2,1fr); margin-top:12px;
+}
+.gallery figure{ margin:0; }
+.gallery img{
+  width:100%; border-radius:12px; border:1px solid var(--line);
+  aspect-ratio: 4 / 3; object-fit:cover; transition:transform .2s ease;
+}
+.gallery img:hover{ transform: translateY(-2px); }
+.gallery figcaption{ color:var(--muted); font-size:.95rem; margin-top:.35rem }
 
 /* ===== Form ===== */
 form{display:grid;gap:12px}
@@ -78,39 +86,39 @@ input[type="checkbox"]{width:auto}
 .note{font-size:.95rem;color:#5b513f}
 
 /* ===== Mobile sticky CTA ===== */
-.sticky-cta{
-  position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);
-  border-top:1px solid var(--line);display:flex;justify-content:center;gap:10px;
-  padding:10px;padding-bottom:calc(10px + env(safe-area-inset-bottom));z-index:9
-}
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);border-top:1px solid var(--line);display:flex;justify-content:center;gap:10px;padding:10px;z-index:9;padding-bottom:calc(10px + env(safe-area-inset-bottom))}
 .sticky-cta .btn{width:min(640px,92vw);text-align:center}
 @media (min-width:768px){ .sticky-cta{display:none} }
+/* 最終セクションで被らないように */
 #reserve{padding-bottom:calc(var(--space-lg) + 84px + env(safe-area-inset-bottom))}
 
-/* ===== Responsive ===== */
+/* ===== Responsive (スマホ最適化) ===== */
+html{ scroll-behavior:smooth; }
 @media (max-width:768px){
-  :root{ --space:clamp(16px,4vw,22px); --space-lg:clamp(32px,9vw,64px) }
-  body{ line-height:1.8 }
-  h1{ font-size:clamp(22px,7vw,32px) }
-  h2{ font-size:clamp(18px,5.6vw,24px) }
-  .wrap{ width:min(94vw,720px) }
-  p,.lead,li{ font-size:16px }
-  main section{ padding:calc(var(--space-lg)*.9) 0 }
-  .hero-video{ border-radius:12px }
-  .hero-copy{ gap:10px; padding:clamp(14px,5vw,24px) }
-  .hero-copy .lead{ max-width:34ch }
-  .btn,.btn-ghost{ min-height:48px; padding:.8rem 1rem }
-  form{ gap:14px }
-  input,select,textarea{ padding:14px; font-size:16px }
-  label{ gap:8px }
-  #reserve .help{ font-size:14px }
+  :root{
+    --space: clamp(16px, 4vw, 22px);
+    --space-lg: clamp(32px, 9vw, 64px);
+  }
+  body{ line-height:1.8; }
+  h1{ font-size: clamp(22px, 7vw, 32px); }
+  h2{ font-size: clamp(18px, 5.6vw, 24px); }
+  .wrap{ width: min(94vw, 720px); }
+  p, .lead, li{ font-size: 16px; }
+  main section{ padding: calc(var(--space-lg) * .9) 0; scroll-margin-top:86px; }
+  .hero{ border-radius:12px; }
+  .hero-copy{ gap:10px; padding:clamp(14px,5vw,24px); }
+  .hero-copy .lead{ max-width:36ch; }
+  .hero-cta{ gap:10px; }
+  .btn{ min-height:48px; padding:.8rem 1rem; }
+  form{ gap:14px; }
+  input, select, textarea{ padding:14px; font-size:16px; } /* iOSズーム防止 */
+  label{ gap:8px; }
+  #reserve .help{ font-size:14px; }
+  .gallery{ grid-template-columns:repeat(2,1fr); gap:10px; }
+  .gallery figcaption{ font-size:14px; }
 }
-@media (max-width:375px){
-  .wrap{ width:min(94vw,700px) }
-  .cta-head{ font-size:13.5px; padding:.5rem .8rem }
-  .brand{ font-size:15px; max-width:45vw }
-  header .head{ padding-block:4px }
-  main section{ scroll-margin-top:92px }
+@media (max-width:390px){
+  .gallery{ grid-template-columns:1fr; }
 }
 </style>
 </head>
@@ -124,29 +132,36 @@ input[type="checkbox"]{width:auto}
 </header>
 
 <main>
-  <!-- 1) HERO：サムネ＋テキスト（YouTube本体は非表示） -->
+  <!-- 1) HERO：静止画像＋コピー -->
   <section id="hero" aria-label="ヒーロー">
     <div class="wrap">
-      <div class="hero-video yt-lite" data-ytid="OHttpGM5tms" aria-label="紹介動画を再生">
-        <img class="hero-thumb" src="https://i.ytimg.com/vi/OHttpGM5tms/hqdefault.jpg" alt="Sowell® 体験動画のサムネイル" width="1280" height="720" loading="eager" fetchpriority="high">
-        <div class="hero-overlay" aria-hidden="true"></div>
-        <div class="hero-copy">
-          <span class="btn-ghost white" style="width:max-content">完全予約制（1週間前まで）</span>
+      <figure class="hero">
+        <!-- 任意のヒーロー画像に差し替え可 -->
+        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1600&q=80&auto=format&fit=crop"
+             width="1600" height="900" alt="朝霧に包まれる森の情景（秋月）" loading="eager" fetchpriority="high">
+        <figcaption class="hero-copy">
+          <span class="btn-ghost" style="width:max-content;color:#fff;border-color:rgba(255,255,255,.6)">完全予約制（1週間前まで）</span>
           <h1>静寂が、あなたを包む。</h1>
-          <p class="lead">秋月の自然とともに、“なにもしない”を味わう静かなセラピー。</p>
+          <p class="lead" style="color:#f3f5f4">秋月の自然とともに、“なにもしない”を味わう静かなセラピー。</p>
           <div class="hero-cta">
             <a class="btn" href="#reserve">今すぐ予約する</a>
+            <a class="btn-ghost" href="#video">動画で見る</a>
           </div>
-        </div>
-      </div>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
-  <!-- 1.5) ヒーロー直下の動画操作ボタン -->
-  <section id="video-actions" aria-label="動画の操作">
-    <div class="wrap hero-actions">
-      <button class="btn js-play-inline" aria-label="このページで動画を再生">▶ このページで再生</button>
-      <a class="btn-ghost" href="https://youtu.be/OHttpGM5tms" target="_blank" rel="noopener" aria-label="YouTubeで動画を開く">↗ YouTubeで見る</a>
+  <!-- 1.5) 動画セクション（独立・軽量） -->
+  <section id="video" aria-label="紹介動画">
+    <div class="wrap">
+      <h2>動画で体験イメージを見る</h2>
+      <p class="lead">再生するまでは画像のみ。クリックで動画を読み込みます。</p>
+      <div class="video-card yt-lite" data-ytid="OHttpGM5tms" aria-label="紹介動画を再生">
+        <img src="https://i.ytimg.com/vi/OHttpGM5tms/hqdefault.jpg" alt="Sowell® 体験動画のサムネイル" width="1280" height="720" loading="lazy">
+        <button class="yt-play" aria-label="動画を再生">▶</button>
+      </div>
+      <p class="cta-inline"><a class="btn-ghost" href="#reserve">動画を見たら予約へ</a></p>
     </div>
   </section>
 
@@ -181,19 +196,26 @@ input[type="checkbox"]{width:auto}
 
       <div class="gallery">
         <figure>
-          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80&auto=format&fit=crop" alt="木漏れ日の小径（秋月の森）">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80&auto=format&fit=crop"
+               alt="木漏れ日の小径（秋月の森）">
           <figcaption>木漏れ日の小径</figcaption>
         </figure>
+
         <figure>
-          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80&auto=format&fit=crop" alt="静かな川辺の風景">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80&auto=format&fit=crop"
+               alt="静かな川辺の風景">
           <figcaption>静かな川辺</figcaption>
         </figure>
+
         <figure>
-          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=80&auto=format&fit=crop" alt="朝霧に包まれる森">
+          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=80&auto=format&fit=crop"
+               alt="朝霧に包まれる森">
           <figcaption>朝霧の森</figcaption>
         </figure>
+
         <figure>
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80&auto=format&fit=crop" alt="縁側でお茶を楽しむ時間">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80&auto=format&fit=crop"
+               alt="縁側でお茶を楽しむ時間">
           <figcaption>縁側のやすらぎ</figcaption>
         </figure>
       </div>
@@ -292,36 +314,26 @@ document.getElementById('year').textContent = new Date().getFullYear();
   const min = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 7);
   const y=min.getFullYear(), m=('0'+(min.getMonth()+1)).slice(-2), d=('0'+min.getDate()).slice(-2);
   f.min = `${y}-${m}-${d}`; f.value = `${y}-${m}-${d}`;
-  document.getElementById('formNote').textContent =
-    `最短のご予約可能日は ${y}年${min.getMonth()+1}月${min.getDate()}日 です。`;
+  document.getElementById('formNote').textContent = `最短のご予約可能日は ${y}年${min.getMonth()+1}月${min.getDate()}日 です。`;
 })();
 
-// 「このページで再生」クリックでiframe生成（初回はmuted=1：iOS安定）
+// 動画（クリックでiframe生成：軽量）
 document.addEventListener('click', (e)=>{
-  const playInline = e.target.closest('.js-play-inline');
-  if(!playInline) return;
-
-  const wrap = document.querySelector('.yt-lite');
-  if(!wrap || wrap.dataset.playing === '1') return; // 二重生成防止
-  const id = wrap.dataset.ytid;
-  if(!id) return;
-
-  const src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&muted=1&playsinline=1&rel=0&modestbranding=1`;
+  const btn = e.target.closest('.yt-play'); if(!btn) return;
+  const wrap = btn.closest('.yt-lite'); const id = wrap?.dataset.ytid; if(!id) return;
+  const src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
   const ifr = document.createElement('iframe');
   ifr.className='yt-iframe'; ifr.src=src; ifr.title='YouTube video player';
   ifr.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
   ifr.allowFullscreen = true;
-
-  // iframeをヒーローに重ねて挿入（テキストは上のまま）
-  ifr.style.position='absolute'; ifr.style.inset='0'; ifr.style.width='100%'; ifr.style.height='100%';
   wrap.appendChild(ifr);
-  wrap.dataset.playing = '1';
 });
 
 // アンカー移動後に見出しへフォーカス（モバイル視認性UP）
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click', ()=>{
-    const id = a.getAttribute('href'); const target = document.querySelector(id);
+    const id = a.getAttribute('href');
+    const target = document.querySelector(id);
     if(!target) return;
     setTimeout(()=>{ target.setAttribute('tabindex','-1'); target.focus({preventScroll:true}); }, 350);
   });
