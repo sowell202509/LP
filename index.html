@@ -41,7 +41,6 @@ footer{padding:var(--space-lg) 0;color:#7a7f86}
 /* ===== Hero (YouTube lightweight + iOS角丸対策) ===== */
 .hero-video{
   position:relative;border-radius:16px;overflow:hidden;background:#000;aspect-ratio:16/9;margin-top:var(--space);
-  /* Safariの角丸にじみ回避 */
   -webkit-mask-image: -webkit-radial-gradient(white, black);
   clip-path: inset(0 round 16px);
 }
@@ -55,6 +54,19 @@ footer{padding:var(--space-lg) 0;color:#7a7f86}
 .hero-copy h1{font-size:clamp(26px,5vw,42px);margin:0 0 .25em}
 .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
 .yt-play:focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+/* ===== ヒーロー直下の動画操作ボタン ===== */
+.hero-actions{
+  display:flex; gap:12px; flex-wrap:wrap; align-items:center;
+  padding-top:8px; padding-bottom:4px;
+}
+.hero-actions .btn, .hero-actions .btn-ghost{
+  min-height:48px; padding:.85rem 1.1rem;
+}
+@media (max-width:480px){
+  .hero-actions{ gap:10px }
+  .hero-actions .btn, .hero-actions .btn-ghost{ flex:1 }
+}
 
 /* ===== Gallery ===== */
 .gallery{display:grid;gap:12px;grid-template-columns:repeat(2,1fr);margin-top:12px}
@@ -79,7 +91,6 @@ input[type="checkbox"]{width:auto}
 }
 .sticky-cta .btn{width:min(640px,92vw);text-align:center}
 @media (min-width:768px){ .sticky-cta{display:none} }
-/* 最終セクションで被らないように */
 #reserve{padding-bottom:calc(var(--space-lg) + 84px + env(safe-area-inset-bottom))}
 
 /* ===== Responsive (スマホ最適化) ===== */
@@ -106,7 +117,7 @@ input[type="checkbox"]{width:auto}
   .cta-head{ font-size:13.5px; padding:.5rem .8rem }
   .brand{ font-size:15px; max-width:45vw }
   header .head{ padding-block:4px }
-  main section{ scroll-margin-top:92px } /* ヘッダーが高くなった時の被り回避 */
+  main section{ scroll-margin-top:92px }
 }
 </style>
 </head>
@@ -136,6 +147,14 @@ input[type="checkbox"]{width:auto}
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- 1.5) ヒーロー直下の動画操作ボタン -->
+  <section id="video-actions" aria-label="動画の操作">
+    <div class="wrap hero-actions">
+      <button class="btn js-play-inline" aria-label="このページで動画を再生">▶ このページで再生</button>
+      <a class="btn-ghost" href="https://youtu.be/OHttpGM5tms" target="_blank" rel="noopener" aria-label="YouTubeで動画を開く">↗ YouTubeで見る</a>
     </div>
   </section>
 
@@ -292,16 +311,20 @@ document.getElementById('year').textContent = new Date().getFullYear();
     `最短のご予約可能日は ${y}年${min.getMonth()+1}月${min.getDate()}日 です。`;
 })();
 
-// YouTube（クリックでiframe生成：軽量／多重挿入防止）
+// YouTube 再生（ヒーロー内ボタン＆直下の「このページで再生」両対応）
+// iOSで安定させるため初回は muted=1、二重生成防止
 document.addEventListener('click', (e)=>{
-  const btn = e.target.closest('.yt-play'); 
-  if(!btn) return;
-  const wrap = btn.closest('.yt-lite'); 
-  if(!wrap || wrap.dataset.playing === '1') return; // 二重生成防止
+  const playInline = e.target.closest('.js-play-inline');
+  const heroPlay   = e.target.closest('.yt-play');
+  const trigger = playInline || heroPlay;
+  if(!trigger) return;
+
+  const wrap = document.querySelector('.yt-lite');
+  if(!wrap || wrap.dataset.playing === '1') return;
   const id = wrap.dataset.ytid;
   if(!id) return;
 
-  const src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+  const src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&muted=1&playsinline=1&rel=0&modestbranding=1`;
   const ifr = document.createElement('iframe');
   ifr.className='yt-iframe'; ifr.src=src; ifr.title='YouTube video player';
   ifr.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
@@ -309,7 +332,8 @@ document.addEventListener('click', (e)=>{
 
   wrap.appendChild(ifr);
   wrap.dataset.playing = '1';
-  btn.style.display = 'none';
+
+  if(heroPlay) heroPlay.style.display = 'none';
 });
 
 // アンカー移動後に見出しへフォーカス（モバイル視認性UP）
