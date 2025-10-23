@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>秋月ヒーリングセラピー｜完全予約制（1週間前まで）</title>
 <meta name="description" content="秋月の自然に包まれる静かなヒーリングセラピー。ご予約は実施日の1週間前まで。">
 
@@ -21,61 +21,69 @@ p,ul{margin:.8em 0}
   --space-lg:clamp(40px,7vw,80px);
 }
 .wrap{width:var(--w);margin-inline:auto;padding-inline:var(--space)}
+
+/* ===== Header（スマホ最適） ===== */
 header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:10}
-.head{display:flex;align-items:center;justify-content:space-between;height:60px}
-.brand{font-weight:700;letter-spacing:.04em}
-.cta-head{display:inline-block;background:#1e4d3e;color:#fff;padding:.7rem 1rem;border-radius:999px;font-weight:700}
+.head{display:flex;align-items:center;justify-content:space-between;height:56px}
+.brand{font-weight:700;letter-spacing:.03em;font-size:1.05rem;white-space:nowrap}
+.cta-head{
+  background:#1e4d3e;color:#fff;
+  padding:.45rem .9rem;border-radius:8px;
+  font-weight:600;font-size:.9rem;white-space:nowrap;
+}
+
+/* ===== Sections ===== */
 main section{padding:var(--space-lg) 0;border-bottom:1px solid var(--line);scroll-margin-top:74px}
 .lead{color:var(--muted)}
 .btn{display:inline-block;background:#1e4d3e;color:#fff;padding:.9rem 1.2rem;border-radius:10px;font-weight:700}
 .btn-ghost{display:inline-block;background:transparent;color:#1e4d3e;padding:.5rem .6rem;border-radius:8px;border:1px solid #cfe0d9}
 .cta-inline{margin-top:.6rem}
 .list{padding-left:1.1em}
-h1{font-size:clamp(24px,4.8vw,40px)} h2{font-size:clamp(20px,3.6vw,28px)}
+h1{font-size:clamp(24px,4.8vw,40px)}
+h2{font-size:clamp(20px,3.6vw,28px)}
 footer{padding:var(--space-lg) 0;color:#7a7f86}
 
-/* ===== Hero (静止画像) ===== */
+/* ===== Hero（静止画像・3:2比・中央寄せ） ===== */
 .hero{
-  border-radius:16px; overflow:hidden; box-shadow:0 8px 24px rgba(0,0,0,.06);
-  background:#000; aspect-ratio:16/9; position:relative; margin-top:var(--space);
+  position:relative;margin-top:var(--space);
+  border-radius:16px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.06);
+  background:#000;aspect-ratio:3/2;
 }
-.hero img{width:100%;height:100%;object-fit:cover;filter:saturate(1.02)}
+.hero img{width:100%;height:100%;object-fit:cover;filter:brightness(.8) saturate(.9)}
 .hero::after{
-  content:""; position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.25) 40%, rgba(0,0,0,.55) 100%);
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.25) 40%,rgba(0,0,0,.6) 100%);
 }
 .hero-copy{
-  position:absolute; inset:0; display:grid; align-content:center; gap:12px;
-  padding:clamp(16px,4vw,40px); color:#fff; text-shadow:0 2px 12px rgba(0,0,0,.35);
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:12px;text-align:center;color:#fff;
+  padding:clamp(14px,4vw,32px);text-shadow:0 2px 10px rgba(0,0,0,.5);
 }
-.hero-copy h1{font-size:clamp(26px,5vw,42px); margin:0 0 .25em}
-.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+.hero-copy h1{font-size:clamp(22px,6vw,38px);margin:0}
+.hero-copy .lead{font-size:clamp(15px,4vw,18px);color:#f5f5f5;max-width:32ch;margin:0 auto}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px}
 
-/* ===== Independent Video (軽量クリック再生) ===== */
+/* ===== Independent Video（軽量クリック再生） ===== */
 .video-card{
-  border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#000;
-  aspect-ratio:16/9; position:relative;
+  border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#000;
+  aspect-ratio:16/9;position:relative;
 }
-.video-card img{width:100%;height:100%;object-fit:cover}
+.video-card img{width:100%;height:100%;object-fit:cover;display:block}
 .yt-play{
-  position:absolute; inset:0; margin:auto; width:72px;height:72px;border:0;border-radius:50%;
-  background:rgba(0,0,0,.55); color:#fff; font-size:28px; display:grid; place-items:center;
-  box-shadow:0 8px 24px rgba(0,0,0,.25); cursor:pointer;
+  position:absolute;inset:0;margin:auto;width:72px;height:72px;border:0;border-radius:50%;
+  background:rgba(0,0,0,.55);color:#fff;font-size:28px;display:grid;place-items:center;
+  box-shadow:0 8px 24px rgba(0,0,0,.25);cursor:pointer;
 }
-.yt-iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
-.yt-play:focus-visible{outline:2px solid #fff; outline-offset:3px}
+.yt-iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt-play:focus-visible{outline:2px solid #fff;outline-offset:3px}
 
 /* ===== Gallery ===== */
-.gallery{
-  display:grid; gap:12px; grid-template-columns:repeat(2,1fr); margin-top:12px;
-}
-.gallery figure{ margin:0; }
-.gallery img{
-  width:100%; border-radius:12px; border:1px solid var(--line);
-  aspect-ratio: 4 / 3; object-fit:cover; transition:transform .2s ease;
-}
-.gallery img:hover{ transform: translateY(-2px); }
-.gallery figcaption{ color:var(--muted); font-size:.95rem; margin-top:.35rem }
+.gallery{display:grid;gap:12px;grid-template-columns:repeat(2,1fr);margin-top:12px}
+.gallery figure{margin:0}
+.gallery img{width:100%;border-radius:12px;border:1px solid var(--line);aspect-ratio:4/3;object-fit:cover;transition:transform .2s ease}
+.gallery img:hover{transform:translateY(-2px)}
+.gallery figcaption{color:var(--muted);font-size:.95rem;margin-top:.35rem}
 
 /* ===== Form ===== */
 form{display:grid;gap:12px}
@@ -89,36 +97,29 @@ input[type="checkbox"]{width:auto}
 .sticky-cta{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);border-top:1px solid var(--line);display:flex;justify-content:center;gap:10px;padding:10px;z-index:9;padding-bottom:calc(10px + env(safe-area-inset-bottom))}
 .sticky-cta .btn{width:min(640px,92vw);text-align:center}
 @media (min-width:768px){ .sticky-cta{display:none} }
-/* 最終セクションで被らないように */
 #reserve{padding-bottom:calc(var(--space-lg) + 84px + env(safe-area-inset-bottom))}
 
-/* ===== Responsive (スマホ最適化) ===== */
-html{ scroll-behavior:smooth; }
+/* ===== Responsive（スマホ最適） ===== */
+html{scroll-behavior:smooth}
 @media (max-width:768px){
-  :root{
-    --space: clamp(16px, 4vw, 22px);
-    --space-lg: clamp(32px, 9vw, 64px);
-  }
-  body{ line-height:1.8; }
-  h1{ font-size: clamp(22px, 7vw, 32px); }
-  h2{ font-size: clamp(18px, 5.6vw, 24px); }
-  .wrap{ width: min(94vw, 720px); }
-  p, .lead, li{ font-size: 16px; }
-  main section{ padding: calc(var(--space-lg) * .9) 0; scroll-margin-top:86px; }
-  .hero{ border-radius:12px; }
-  .hero-copy{ gap:10px; padding:clamp(14px,5vw,24px); }
-  .hero-copy .lead{ max-width:36ch; }
-  .hero-cta{ gap:10px; }
-  .btn{ min-height:48px; padding:.8rem 1rem; }
-  form{ gap:14px; }
-  input, select, textarea{ padding:14px; font-size:16px; } /* iOSズーム防止 */
-  label{ gap:8px; }
-  #reserve .help{ font-size:14px; }
-  .gallery{ grid-template-columns:repeat(2,1fr); gap:10px; }
-  .gallery figcaption{ font-size:14px; }
+  :root{ --space:clamp(16px,4vw,22px); --space-lg:clamp(32px,9vw,64px); }
+  body{line-height:1.8}
+  h1{font-size:clamp(22px,7vw,32px)}
+  h2{font-size:clamp(18px,5.6vw,24px)}
+  .wrap{width:min(94vw,720px)}
+  p,.lead,li{font-size:16px}
+  main section{padding:calc(var(--space-lg)*.9) 0;scroll-margin-top:86px}
+  .hero{border-radius:12px}
+  .btn{min-height:48px;padding:.8rem 1rem}
+  form{gap:14px}
+  input,select,textarea{padding:14px;font-size:16px}
+  label{gap:8px}
+  #reserve .help{font-size:14px}
+  .gallery{gap:10px}
+  .gallery figcaption{font-size:14px}
 }
 @media (max-width:390px){
-  .gallery{ grid-template-columns:1fr; }
+  .gallery{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -132,11 +133,10 @@ html{ scroll-behavior:smooth; }
 </header>
 
 <main>
-  <!-- 1) HERO：静止画像＋コピー -->
+  <!-- 1) HERO：静止画像＋中央寄せコピー -->
   <section id="hero" aria-label="ヒーロー">
     <div class="wrap">
       <figure class="hero">
-        <!-- 任意のヒーロー画像に差し替え可 -->
         <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1600&q=80&auto=format&fit=crop"
              width="1600" height="900" alt="朝霧に包まれる森の情景（秋月）" loading="eager" fetchpriority="high">
         <figcaption class="hero-copy">
@@ -152,7 +152,7 @@ html{ scroll-behavior:smooth; }
     </div>
   </section>
 
-  <!-- 1.5) 動画セクション（独立・軽量） -->
+  <!-- 1.5) 動画（独立・軽量） -->
   <section id="video" aria-label="紹介動画">
     <div class="wrap">
       <h2>動画で体験イメージを見る</h2>
@@ -196,26 +196,19 @@ html{ scroll-behavior:smooth; }
 
       <div class="gallery">
         <figure>
-          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80&auto=format&fit=crop"
-               alt="木漏れ日の小径（秋月の森）">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80&auto=format&fit=crop" alt="木漏れ日の小径（秋月の森）">
           <figcaption>木漏れ日の小径</figcaption>
         </figure>
-
         <figure>
-          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80&auto=format&fit=crop"
-               alt="静かな川辺の風景">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80&auto=format&fit=crop" alt="静かな川辺の風景">
           <figcaption>静かな川辺</figcaption>
         </figure>
-
         <figure>
-          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=80&auto=format&fit=crop"
-               alt="朝霧に包まれる森">
+          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=80&auto=format&fit=crop" alt="朝霧に包まれる森">
           <figcaption>朝霧の森</figcaption>
         </figure>
-
         <figure>
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80&auto=format&fit=crop"
-               alt="縁側でお茶を楽しむ時間">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80&auto=format&fit=crop" alt="縁側でお茶を楽しむ時間">
           <figcaption>縁側のやすらぎ</figcaption>
         </figure>
       </div>
@@ -332,10 +325,8 @@ document.addEventListener('click', (e)=>{
 // アンカー移動後に見出しへフォーカス（モバイル視認性UP）
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click', ()=>{
-    const id = a.getAttribute('href');
-    const target = document.querySelector(id);
-    if(!target) return;
-    setTimeout(()=>{ target.setAttribute('tabindex','-1'); target.focus({preventScroll:true}); }, 350);
+    const id = a.getAttribute('href'); const target = document.querySelector(id);
+    if(!target) return; setTimeout(()=>{ target.setAttribute('tabindex','-1'); target.focus({preventScroll:true}); }, 350);
   });
 });
 </script>
