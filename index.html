@@ -9,71 +9,46 @@
 <style>
 /* ===== Base / Layout ===== */
 *,*::before,*::after{box-sizing:border-box}
-body{margin:0;font-family:system-ui,-apple-system,"Noto Sans JP",sans-serif;line-height:1.75;color:#1f2328;background:#fff}
-img{max-width:100%;height:auto;display:block}
-a{color:inherit;text-decoration:none}
-h1,h2{line-height:1.25;margin:0 0 .5em}
-p,ul{margin:.8em 0}
 :root{
   --line:#e7e7e7; --muted:#606770; --accent:#1e4d3e;
   --w:max(72ch, min(92vw, 760px));
   --space:clamp(16px,2.8vw,24px);
   --space-lg:clamp(40px,7vw,80px);
 }
+html{scroll-behavior:smooth}
+body{margin:0;font-family:system-ui,-apple-system,"Noto Sans JP",sans-serif;color:#1f2328;background:#fff;line-height:1.75}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2{line-height:1.25;margin:0 0 .5em}
+p,ul{margin:.8em 0}
 .wrap{width:var(--w);margin-inline:auto;padding-inline:var(--space)}
+.lead{color:var(--muted)}
+.btn{display:inline-block;background:#1e4d3e;color:#fff;padding:.9rem 1.2rem;border-radius:10px;font-weight:700}
+.btn-ghost{display:inline-block;background:transparent;color:#1e4d3e;padding:.8rem 1.2rem;border-radius:10px;border:1px solid #cfe0d9}
+h1{font-size:clamp(26px,5.6vw,44px)} h2{font-size:clamp(20px,3.6vw,28px)}
+main section{padding:var(--space-lg) 0;border-bottom:1px solid var(--line);scroll-margin-top:74px}
+footer{padding:var(--space-lg) 0;color:#7a7f86}
 
-/* ===== Header（スマホ最適） ===== */
+/* ===== Header（シンプル・スマホでも1行） ===== */
 header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:10}
 .head{display:flex;align-items:center;justify-content:space-between;height:56px}
 .brand{font-weight:700;letter-spacing:.03em;font-size:1.05rem;white-space:nowrap}
-.cta-head{
-  background:#1e4d3e;color:#fff;
-  padding:.45rem .9rem;border-radius:8px;
-  font-weight:600;font-size:.9rem;white-space:nowrap;
-}
+.cta-head{background:#1e4d3e;color:#fff;padding:.45rem .9rem;border-radius:8px;font-weight:600;font-size:.9rem;white-space:nowrap}
 
-/* ===== Sections ===== */
-main section{padding:var(--space-lg) 0;border-bottom:1px solid var(--line);scroll-margin-top:74px}
-.lead{color:var(--muted)}
-.btn{display:inline-block;background:#1e4d3e;color:#fff;padding:.9rem 1.2rem;border-radius:10px;font-weight:700}
-.btn-ghost{display:inline-block;background:transparent;color:#1e4d3e;padding:.5rem .6rem;border-radius:8px;border:1px solid #cfe0d9}
-.cta-inline{margin-top:.6rem}
-.list{padding-left:1.1em}
-h1{font-size:clamp(24px,4.8vw,40px)}
-h2{font-size:clamp(20px,3.6vw,28px)}
-footer{padding:var(--space-lg) 0;color:#7a7f86}
+/* ===== HERO：全面画像（枠なし）＋下にテキスト ===== */
+#hero{padding:0;border-bottom:none}
+.hero-image{width:100%;height:72vh;min-height:360px;max-height:820px;overflow:hidden}
+.hero-image img{width:100%;height:100%;object-fit:cover;filter:brightness(.9) saturate(.9)}
+.hero-text{ text-align:center; padding:clamp(28px,6vw,72px) 0; }
+.hero-text .lead{font-size:clamp(16px,4vw,20px); color:#555}
+.hero-cta{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:8px}
 
-/* ===== Hero（静止画像・3:2比・中央寄せ） ===== */
-.hero{
-  position:relative;margin-top:var(--space);
-  border-radius:16px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.06);
-  background:#000;aspect-ratio:3/2;
-}
-.hero img{width:100%;height:100%;object-fit:cover;filter:brightness(.8) saturate(.9)}
-.hero::after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.25) 40%,rgba(0,0,0,.6) 100%);
-}
-.hero-copy{
-  position:absolute;inset:0;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:12px;text-align:center;color:#fff;
-  padding:clamp(14px,4vw,32px);text-shadow:0 2px 10px rgba(0,0,0,.5);
-}
-.hero-copy h1{font-size:clamp(22px,6vw,38px);margin:0}
-.hero-copy .lead{font-size:clamp(15px,4vw,18px);color:#f5f5f5;max-width:32ch;margin:0 auto}
-.hero-cta{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px}
-
-/* ===== Independent Video（軽量クリック再生） ===== */
-.video-card{
-  border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#000;
-  aspect-ratio:16/9;position:relative;
-}
-.video-card img{width:100%;height:100%;object-fit:cover;display:block}
+/* ===== Video（独立・軽量クリック再生） ===== */
+.video-card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#000;aspect-ratio:16/9;position:relative}
+.video-card img{width:100%;height:100%;object-fit:cover}
 .yt-play{
   position:absolute;inset:0;margin:auto;width:72px;height:72px;border:0;border-radius:50%;
-  background:rgba(0,0,0,.55);color:#fff;font-size:28px;display:grid;place-items:center;
-  box-shadow:0 8px 24px rgba(0,0,0,.25);cursor:pointer;
+  background:rgba(0,0,0,.55);color:#fff;font-size:28px;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.25);cursor:pointer
 }
 .yt-iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .yt-play:focus-visible{outline:2px solid #fff;outline-offset:3px}
@@ -92,6 +67,7 @@ input,select,textarea{font:inherit;border:1px solid var(--line);border-radius:8p
 input[type="checkbox"]{width:auto}
 .help{color:#7a7f86;font-size:.95rem}
 .note{font-size:.95rem;color:#5b513f}
+.list{padding-left:1.1em}
 
 /* ===== Mobile sticky CTA ===== */
 .sticky-cta{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);border-top:1px solid var(--line);display:flex;justify-content:center;gap:10px;padding:10px;z-index:9;padding-bottom:calc(10px + env(safe-area-inset-bottom))}
@@ -100,23 +76,21 @@ input[type="checkbox"]{width:auto}
 #reserve{padding-bottom:calc(var(--space-lg) + 84px + env(safe-area-inset-bottom))}
 
 /* ===== Responsive（スマホ最適） ===== */
-html{scroll-behavior:smooth}
 @media (max-width:768px){
   :root{ --space:clamp(16px,4vw,22px); --space-lg:clamp(32px,9vw,64px); }
   body{line-height:1.8}
-  h1{font-size:clamp(22px,7vw,32px)}
-  h2{font-size:clamp(18px,5.6vw,24px)}
+  h1{font-size:clamp(24px,7vw,32px)} h2{font-size:clamp(18px,5.6vw,24px)}
   .wrap{width:min(94vw,720px)}
   p,.lead,li{font-size:16px}
   main section{padding:calc(var(--space-lg)*.9) 0;scroll-margin-top:86px}
-  .hero{border-radius:12px}
-  .btn{min-height:48px;padding:.8rem 1rem}
-  form{gap:14px}
-  input,select,textarea{padding:14px;font-size:16px}
-  label{gap:8px}
-  #reserve .help{font-size:14px}
+  .hero-image{height:58vh;min-height:320px}
   .gallery{gap:10px}
   .gallery figcaption{font-size:14px}
+  .btn,.btn-ghost{min-height:48px;padding:.8rem 1rem}
+  form{gap:14px}
+  input,select,textarea{padding:14px;font-size:16px} /* iOSズーム防止 */
+  label{gap:8px}
+  #reserve .help{font-size:14px}
 }
 @media (max-width:390px){
   .gallery{grid-template-columns:1fr}
@@ -133,26 +107,24 @@ html{scroll-behavior:smooth}
 </header>
 
 <main>
-  <!-- 1) HERO：静止画像＋中央寄せコピー -->
+  <!-- ===== HERO：全面画像＋下にテキスト ===== -->
   <section id="hero" aria-label="ヒーロー">
-    <div class="wrap">
-      <figure class="hero">
-        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1600&q=80&auto=format&fit=crop"
-             width="1600" height="900" alt="朝霧に包まれる森の情景（秋月）" loading="eager" fetchpriority="high">
-        <figcaption class="hero-copy">
-          <span class="btn-ghost" style="width:max-content;color:#fff;border-color:rgba(255,255,255,.6)">完全予約制（1週間前まで）</span>
-          <h1>静寂が、あなたを包む。</h1>
-          <p class="lead" style="color:#f3f5f4">秋月の自然とともに、“なにもしない”を味わう静かなセラピー。</p>
-          <div class="hero-cta">
-            <a class="btn" href="#reserve">今すぐ予約する</a>
-            <a class="btn-ghost" href="#video">動画で見る</a>
-          </div>
-        </figcaption>
-      </figure>
+    <div class="hero-image">
+      <!-- ヒーロー画像：自前素材に差し替えてOK -->
+      <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1800&q=80&auto=format&fit=crop"
+           alt="秋月の自然に包まれる風景">
+    </div>
+    <div class="wrap hero-text">
+      <h1>秋月ヒーリングセラピー</h1>
+      <p class="lead">秋月の自然とともに、“なにもしない”を味わう静かなセラピー。</p>
+      <div class="hero-cta">
+        <a class="btn" href="#reserve">予約（1週間前まで）</a>
+        <a class="btn-ghost" href="#video">動画で見る</a>
+      </div>
     </div>
   </section>
 
-  <!-- 1.5) 動画（独立・軽量） -->
+  <!-- ===== 動画（独立・軽量） ===== -->
   <section id="video" aria-label="紹介動画">
     <div class="wrap">
       <h2>動画で体験イメージを見る</h2>
@@ -165,7 +137,7 @@ html{scroll-behavior:smooth}
     </div>
   </section>
 
-  <!-- 2) コンセプト -->
+  <!-- ===== コンセプト ===== -->
   <section id="concept">
     <div class="wrap">
       <h2>コンセプト</h2>
@@ -174,7 +146,7 @@ html{scroll-behavior:smooth}
     </div>
   </section>
 
-  <!-- 3) セッション -->
+  <!-- ===== セッション ===== -->
   <section id="session">
     <div class="wrap">
       <h2>セッションについて</h2>
@@ -188,7 +160,7 @@ html{scroll-behavior:smooth}
     </div>
   </section>
 
-  <!-- 3.5) ギャラリー（仮画像） -->
+  <!-- ===== ギャラリー（仮画像） ===== -->
   <section id="gallery">
     <div class="wrap">
       <h2>秋月の空間</h2>
@@ -217,7 +189,7 @@ html{scroll-behavior:smooth}
     </div>
   </section>
 
-  <!-- 4) 料金・時間 -->
+  <!-- ===== 料金・時間 ===== -->
   <section id="price">
     <div class="wrap">
       <h2>料金・時間</h2>
@@ -227,7 +199,7 @@ html{scroll-behavior:smooth}
     </div>
   </section>
 
-  <!-- 5) 予約ルール -->
+  <!-- ===== 予約ルール ===== -->
   <section id="policy">
     <div class="wrap">
       <h2>ご予約について</h2>
@@ -242,7 +214,7 @@ html{scroll-behavior:smooth}
     </div>
   </section>
 
-  <!-- 6) 予約フォーム -->
+  <!-- ===== 予約フォーム ===== -->
   <section id="reserve">
     <div class="wrap">
       <h2>予約フォーム</h2>
@@ -270,7 +242,7 @@ html{scroll-behavior:smooth}
     </div>
   </section>
 
-  <!-- 7) アクセス / FAQ -->
+  <!-- ===== アクセス / FAQ ===== -->
   <section id="access">
     <div class="wrap">
       <h2>アクセス / FAQ</h2>
@@ -325,8 +297,10 @@ document.addEventListener('click', (e)=>{
 // アンカー移動後に見出しへフォーカス（モバイル視認性UP）
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click', ()=>{
-    const id = a.getAttribute('href'); const target = document.querySelector(id);
-    if(!target) return; setTimeout(()=>{ target.setAttribute('tabindex','-1'); target.focus({preventScroll:true}); }, 350);
+    const id = a.getAttribute('href');
+    const target = document.querySelector(id);
+    if(!target) return;
+    setTimeout(()=>{ target.setAttribute('tabindex','-1'); target.focus({preventScroll:true}); }, 350);
   });
 });
 </script>
