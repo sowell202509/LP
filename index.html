@@ -1,103 +1,105 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>秋月ヒーリングセラピー｜完全予約制（1週間前まで）</title>
-  <meta name="description" content="秋月の自然に包まれる静かなヒーリングセラピー。ご予約は実施日の1週間前まで。">
-  <style>
-    *,*::before,*::after{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,"Noto Sans JP",sans-serif;line-height:1.75;color:#1f2328;background:#fff}
-    img{max-width:100%;height:auto;display:block}
-    a{color:inherit;text-decoration:none}
-    h1,h2{line-height:1.25;margin:0 0 .5em}
-    p,ul{margin:.8em 0}
-    :root{
-      --ink:#1f2328;--muted:#606770;--line:#e7e7e7;--accent:#1e4d3e;
-      --w:max(72ch, min(92vw, 760px));
-      --space:clamp(16px,2.8vw,24px);
-      --space-lg:clamp(40px,7vw,80px);
-    }
-    .wrap{width:var(--w);margin-inline:auto;padding-inline:var(--space)}
-    header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:10}
-    .head{display:flex;align-items:center;justify-content:space-between;height:60px}
-    .brand{font-weight:700;letter-spacing:.04em}
-    .cta{display:inline-block;background:#1e4d3e;color:#fff;padding:.7rem 1rem;border-radius:999px;font-weight:700}
-    main section{padding:var(--space-lg) 0;border-bottom:1px solid var(--line);scroll-margin-top:74px}
-    .lead{color:var(--muted)}
-    .note{font-size:.95rem;color:#5b513f}
-    .btn{display:inline-block;background:#1e4d3e;color:#fff;padding:.9rem 1.2rem;border-radius:10px;text-decoration:none;font-weight:700}
-    .btn-ghost{display:inline-block;background:rgba(255,255,255,.15);color:#fff;padding:.9rem 1.2rem;border-radius:10px;border:1px solid rgba(255,255,255,.4);backdrop-filter:blur(2px)}
-    .list{padding-left:1.1em}
-    footer{padding:var(--space-lg) 0;color:#7a7f86}
-    h1{font-size:clamp(24px,4.8vw,40px)}
-    h2{font-size:clamp(20px,3.6vw,28px);margin-top:0}
-    form{display:grid;gap:12px}
-    label{display:grid;gap:6px}
-    input,select,textarea{font:inherit;border:1px solid var(--line);border-radius:8px;padding:12px}
-    input[type="checkbox"]{width:auto}
-    .help{color:#7a7f86;font-size:.95rem}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>秋月ヒーリングセラピー｜完全予約制（1週間前まで）</title>
+<meta name="description" content="秋月の自然に包まれる静かなヒーリングセラピー。ご予約は実施日の1週間前まで。">
+<style>
+  /* ===== Base / Layout ===== */
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"Noto Sans JP",sans-serif;line-height:1.75;color:#1f2328;background:#fff}
+  img{max-width:100%;height:auto;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2{line-height:1.25;margin:0 0 .5em}
+  p,ul{margin:.8em 0}
+  :root{
+    --line:#e7e7e7; --muted:#606770; --accent:#1e4d3e;
+    --w:max(72ch, min(92vw, 760px));
+    --space:clamp(16px,2.8vw,24px);
+    --space-lg:clamp(40px,7vw,80px);
+  }
+  .wrap{width:var(--w);margin-inline:auto;padding-inline:var(--space)}
+  header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:10}
+  .head{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font-weight:700;letter-spacing:.04em}
+  .cta-head{display:inline-block;background:#1e4d3e;color:#fff;padding:.7rem 1rem;border-radius:999px;font-weight:700}
+  main section{padding:var(--space-lg) 0;border-bottom:1px solid var(--line);scroll-margin-top:74px}
+  .lead{color:var(--muted)}
+  .btn{display:inline-block;background:#1e4d3e;color:#fff;padding:.9rem 1.2rem;border-radius:10px;font-weight:700}
+  .btn-ghost{display:inline-block;background:transparent;color:#1e4d3e;padding:.5rem .6rem;border-radius:8px;border:1px solid #cfe0d9}
+  .cta-inline{margin-top:.6rem}
+  .list{padding-left:1.1em}
+  h1{font-size:clamp(24px,4.8vw,40px)} h2{font-size:clamp(20px,3.6vw,28px)}
+  footer{padding:var(--space-lg) 0;color:#7a7f86}
 
-    /* ヒーロー（YouTube軽量版） */
-    .hero-video{position:relative;border-radius:16px;overflow:hidden;background:#000;aspect-ratio:16/9;margin-top:var(--space-lg)}
-    .hero-thumb{width:100%;height:100%;object-fit:cover;display:block}
-    .hero-overlay{
-      position:absolute;inset:0;
-      background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(0,0,0,.25) 40%,rgba(0,0,0,.5) 100%);
-      pointer-events:none;
-    }
-    .hero-copy{
-      position:absolute;inset:0;display:grid;align-content:center;gap:12px;
-      padding:clamp(16px,4vw,40px);color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.35)
-    }
-    .hero-copy h1{font-size:clamp(26px,5vw,42px);margin:0 0 .25em}
-    .hero-copy .lead{max-width:60ch}
-    .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
-    .yt-iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-    .yt-play:focus-visible{outline:2px solid #fff;outline-offset:3px}
-  </style>
+  /* ===== Hero (YouTube lightweight) ===== */
+  .hero-video{position:relative;border-radius:16px;overflow:hidden;background:#000;aspect-ratio:16/9;margin-top:var(--space)}
+  .hero-thumb{width:100%;height:100%;object-fit:cover}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(0,0,0,.25) 40%,rgba(0,0,0,.5) 100%)}
+  .hero-copy{position:absolute;inset:0;display:grid;align-content:center;gap:12px;padding:clamp(16px,4vw,40px);color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.35)}
+  .hero-copy h1{font-size:clamp(26px,5vw,42px);margin:0 0 .25em}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+  .btn-ghost.white{color:#fff;border-color:rgba(255,255,255,.6)}
+  .yt-iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .yt-play:focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+  /* ===== Form ===== */
+  form{display:grid;gap:12px}
+  label{display:grid;gap:6px}
+  input,select,textarea{font:inherit;border:1px solid var(--line);border-radius:8px;padding:12px}
+  input[type="checkbox"]{width:auto}
+
+  /* ===== Mobile sticky CTA ===== */
+  .sticky-cta{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);border-top:1px solid var(--line);display:flex;justify-content:center;gap:10px;padding:10px;z-index:9}
+  .sticky-cta .btn{width:min(640px,92vw);text-align:center}
+  @media (min-width:768px){ .sticky-cta{display:none} }
+  /* ページ最終部で被らないように */
+  #reserve{padding-bottom:calc(var(--space-lg) + 72px)}
+
+  /* ===== Utilities ===== */
+  .help{color:#7a7f86;font-size:.95rem}
+  .note{font-size:.95rem;color:#5b513f}
+</style>
 </head>
-
 <body>
   <header>
     <div class="wrap head">
       <div class="brand">秋月ヒーリングセラピー</div>
-      <a class="cta" href="#reserve">予約（1週間前まで）</a>
+      <a class="cta-head" href="#reserve">予約（1週間前まで）</a>
     </div>
   </header>
 
   <main>
-    <!-- ===== Hero (YouTube軽量ヒーロー) ===== -->
-    <section id="hero" aria-label="ヒーロー" style="border-bottom:1px solid var(--line)">
+    <!-- 1) HERO：動画背景＋即時CTA -->
+    <section id="hero" aria-label="ヒーロー">
       <div class="wrap">
         <div class="hero-video yt-lite" data-ytid="OHttpGM5tms" aria-label="紹介動画を再生">
-          <img class="hero-thumb"
-               src="https://i.ytimg.com/vi/OHttpGM5tms/hqdefault.jpg"
-               alt="Sowell® 第2回ソエル体験会 サムネイル"
-               width="1280" height="720" loading="eager" fetchpriority="high">
-          <div class="hero-overlay"></div>
+          <img class="hero-thumb" src="https://i.ytimg.com/vi/OHttpGM5tms/hqdefault.jpg" alt="Sowell® 体験動画のサムネイル" width="1280" height="720" loading="eager" fetchpriority="high">
+          <div class="hero-overlay" aria-hidden="true"></div>
           <div class="hero-copy">
-            <span class="tag">完全予約制（1週間前まで）</span>
+            <span class="btn-ghost white" style="width:max-content">完全予約制（1週間前まで）</span>
             <h1>静寂が、あなたを包む。</h1>
             <p class="lead">秋月の自然とともに、“なにもしない”を味わう静かなセラピー。</p>
             <div class="hero-cta">
-              <a class="btn" href="#reserve">予約する</a>
-              <button class="btn-ghost yt-play" aria-label="動画を再生">▶ 動画で見る</button>
+              <a class="btn" href="#reserve">今すぐ予約する</a>
+              <button class="btn-ghost white yt-play" aria-label="動画を再生">▶ 動画で見る</button>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- コンセプト -->
+    <!-- 2) コンセプト（末尾にCTA） -->
     <section id="concept">
       <div class="wrap">
         <h2>コンセプト</h2>
         <p>「なにもしない」を大切に。音・香・やわらかなタッチ、そして呼吸。必要なものだけを静かに重ね、過不足なく整える時間です。</p>
+        <p class="cta-inline"><a class="btn-ghost" href="#reserve">予約へ進む</a></p>
       </div>
     </section>
 
-    <!-- セッション内容 -->
+    <!-- 3) セッション（末尾にCTA） -->
     <section id="session">
       <div class="wrap">
         <h2>セッションについて</h2>
@@ -107,19 +109,21 @@
           <li>タッチ：重みと「間」を大切に整える</li>
           <li>呼吸：深く穏やかな呼吸へと導く</li>
         </ul>
+        <p class="cta-inline"><a class="btn-ghost" href="#reserve">この内容で予約する</a></p>
       </div>
     </section>
 
-    <!-- 料金 -->
+    <!-- 4) 料金・時間（直下に問い合わせCTA） -->
     <section id="price">
       <div class="wrap">
         <h2>料金・時間</h2>
         <p class="lead">受付枠：10:00／12:00／14:00（最終）</p>
         <p>料金は近日公開（お問い合わせ可）。枠が重なった場合は先着順でご案内します。</p>
+        <p class="cta-inline"><a class="btn-ghost" href="#reserve">空き状況を問い合わせる</a></p>
       </div>
     </section>
 
-    <!-- ポリシー -->
+    <!-- 5) 予約ルール（明記） -->
     <section id="policy">
       <div class="wrap">
         <h2>ご予約について</h2>
@@ -130,10 +134,11 @@
           <li>場所の詳細は予約確定後にご案内</li>
           <li>服装：動きやすく体温調整しやすいもの</li>
         </ul>
+        <p class="cta-inline"><a class="btn-ghost" href="#reserve">規約に同意して予約へ</a></p>
       </div>
     </section>
 
-    <!-- 予約フォーム -->
+    <!-- 6) 予約フォーム（主目的） -->
     <section id="reserve">
       <div class="wrap">
         <h2>予約フォーム</h2>
@@ -153,8 +158,7 @@
             <textarea name="message" rows="4" placeholder="香りが苦手／静かめ希望 などあれば"></textarea>
           </label>
           <label style="display:flex;align-items:center;gap:.6rem">
-            <input type="checkbox" id="agree" required>
-            規約・プライバシーに同意します
+            <input type="checkbox" id="agree" required> 規約・プライバシーに同意します
           </label>
           <button class="btn" type="submit">この内容で申し込む</button>
           <p class="note" id="formNote"></p>
@@ -162,7 +166,7 @@
       </div>
     </section>
 
-    <!-- アクセス -->
+    <!-- 7) アクセス / FAQ（最後の不安つぶし） -->
     <section id="access">
       <div class="wrap">
         <h2>アクセス / FAQ</h2>
@@ -172,9 +176,15 @@
           <li><strong>香りが苦手</strong> 使用は任意です。事前にお知らせください。</li>
           <li><strong>雨天時</strong> 屋内へ切替。危険が予測される場合は日程変更をご相談。</li>
         </ul>
+        <p class="cta-inline"><a class="btn-ghost" href="#reserve">予約フォームへ戻る</a></p>
       </div>
     </section>
   </main>
+
+  <!-- モバイル固定CTA -->
+  <div class="sticky-cta" role="region" aria-label="固定予約ボタン（スマホ）">
+    <a class="btn" href="#reserve">予約（1週間前まで）</a>
+  </div>
 
   <footer>
     <div class="wrap">
@@ -182,40 +192,31 @@
     </div>
   </footer>
 
-  <script>
-    // 年
-    document.getElementById('year').textContent = new Date().getFullYear();
+<script>
+  // 年
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    // 予約日：今日+7日以降のみ
-    (function(){
-      const f = document.getElementById('dateField'); if(!f) return;
-      const now = new Date();
-      const min = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 7);
-      const y = min.getFullYear(),
-            m = ('0'+(min.getMonth()+1)).slice(-2),
-            d = ('0'+min.getDate()).slice(-2);
-      f.min = `${y}-${m}-${d}`;
-      f.value = `${y}-${m}-${d}`;
-      document.getElementById('formNote').textContent =
-        `最短のご予約可能日は ${y}年${min.getMonth()+1}月${min.getDate()}日 です。`;
-    })();
+  // 予約日：今日+7日以降のみ
+  (function(){
+    const f = document.getElementById('dateField'); if(!f) return;
+    const now = new Date();
+    const min = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 7);
+    const y=min.getFullYear(), m=('0'+(min.getMonth()+1)).slice(-2), d=('0'+min.getDate()).slice(-2);
+    f.min = `${y}-${m}-${d}`; f.value = `${y}-${m}-${d}`;
+    document.getElementById('formNote').textContent = `最短のご予約可能日は ${y}年${min.getMonth()+1}月${min.getDate()}日 です。`;
+  })();
 
-    // YouTubeヒーロークリック再生
-    document.addEventListener('click', (e)=>{
-      const btn = e.target.closest('.yt-play');
-      if(!btn) return;
-      const wrap = btn.closest('.yt-lite');
-      const id = wrap?.dataset.ytid;
-      if(!id) return;
-      const src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
-      const ifr = document.createElement('iframe');
-      ifr.className = 'yt-iframe';
-      ifr.src = src;
-      ifr.title = 'YouTube video player';
-      ifr.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-      ifr.allowFullscreen = true;
-      wrap.appendChild(ifr);
-    });
-  </script>
+  // YouTube（クリックでiframe生成：軽量）
+  document.addEventListener('click', (e)=>{
+    const btn = e.target.closest('.yt-play'); if(!btn) return;
+    const wrap = btn.closest('.yt-lite'); const id = wrap?.dataset.ytid; if(!id) return;
+    const src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+    const ifr = document.createElement('iframe');
+    ifr.className='yt-iframe'; ifr.src=src; ifr.title='YouTube video player';
+    ifr.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    ifr.allowFullscreen = true;
+    wrap.appendChild(ifr);
+  });
+</script>
 </body>
 </html>
