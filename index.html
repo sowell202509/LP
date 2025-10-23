@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>秋月ヒーリングセラピー｜完全予約制（1週間前まで）</title>
+  <meta name="description" content="秋月の自然に包まれる完全予約制ヒーリングセラピー。ご予約は1週間前まで受付。">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      /* 色 */
+      --bg:#faf7f2;
+      --ink:#2c2a28;
+      --sub:#5a6a60;
+      --line:#e6e0d6;
+      --accent:#9db8a3;
+      --accent-2:#d7c8a8;
+      --btn:#2f4a3f;
+
+      /* 余白・タイポ（流体） */
+      --space: clamp(16px, 2.5vw, 28px);
+      --space-lg: clamp(40px, 7vw, 96px);
+      --radius: 16px;
+      --shadow: 0 8px 24px rgba(0,0,0,.06);
+      --w: clamp(320px, 92vw, 1120px);
+
+      --fs-sm: clamp(13px, 1.7vw, 15px);
+      --fs-md: clamp(15px, 2vw, 17px);
+      --fs-lg: clamp(20px, 3vw, 26px);
+      --fs-xl: clamp(26px, 5vw, 42px);
+      --fs-xxl: clamp(32px, 6vw, 56px);
+    }
+
+    /* Reset（最小限） */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--ink); background:var(--bg); line-height:1.8;
+      font-family:"Noto Sans JP",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Meiryo,sans-serif;
+      -webkit-text-size-adjust:100%;
+      text-rendering:optimizeLegibility;
+    }
+    img{max-width:100%; height:auto; display:block}
+    h1,h2,h3{font-family:"Shippori Mincho","Noto Sans JP",serif; line-height:1.35; margin:0 0 .5em}
+    p{margin:.5em 0}
+    a{color:inherit; text-decoration:none}
+
+    .container{width:var(--w); margin-inline:auto; padding-inline:var(--space)}
+
+    /* タグ/ボタン */
+    .tag{display:inline-block; font-size:var(--fs-sm); letter-spacing:.06em; color:var(--sub); background:#fff; border:1px solid var(--line); border-radius:999px; padding:.3rem .75rem}
+    .btn, .btn-ghost{
+      display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+      padding:.9rem 1.2rem; border-radius:999px; font-weight:700; letter-spacing:.06em;
+      border:0; cursor:pointer; white-space:nowrap; transition:transform .15s ease, opacity .15s ease, box-shadow .2s ease;
+      font-size:var(--fs-md);
+    }
+    .btn{background:var(--btn); color:#fff; box-shadow:var(--shadow)}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-ghost{background:rgba(255,255,255,.75); color:#1e1e1e; border:1px solid rgba(0,0,0,.06)}
+    .btn-ghost:hover{opacity:.9}
+
+    /* Header（ハンバーガー対応） */
+    header.site-header{
+      position:sticky; top:0; z-index:100; backdrop-filter:saturate(120%) blur(6px);
+      background:rgba(250,247,242,.85); border-bottom:1px solid var(--line);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:12px; height:64px}
+    .brand{display:flex; align-items:center; gap:12px}
+    .brand__logo{width:32px; height:32px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+    .brand__name{font-weight:700; letter-spacing:.08em}
+    .menu-toggle{
+      display:inline-flex; width:42px; height:42px; align-items:center; justify-content:center;
+      border:1px solid var(--line); border-radius:12px; background:#fff;
+    }
+    .nav__links{
+      position:fixed; inset:auto 0 0 0; transform:translateY(100%);
+      display:flex; flex-direction:column; gap:12px; padding:16px; background:rgba(250,247,242,.98);
+      border-top:1px solid var(--line); transition:transform .2s ease; z-index:90;
+    }
+    .nav__links.is-open{transform:translateY(0)}
+    .nav__inline{display:none; gap:12px; align-items:center}
+
+    /* 768px〜はインラインナビ */
+    @media (min-width:768px){
+      .menu-toggle{display:none}
+      .nav__links{position:static; transform:none; flex-direction:row; padding:0; background:transparent; border:0}
+      .nav__inline{display:flex}
+    }
+
+    /* Hero */
+    .hero{
+      position:relative; overflow:hidden; border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(1200px 400px at 50% -200px, rgba(157,184,163,.28), transparent 60%),
+        radial-gradient(800px 300px at 10% -100px, rgba(215,200,168,.28), transparent 60%),
+        var(--bg);
+    }
+    .hero__wrap{display:grid; gap:var(--space); padding-block:var(--space-lg)}
+    .hero__visual{position:relative; border-radius:calc(var(--radius)*1.5); overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line)}
+    .hero__visual img{width:100%; height:clamp(220px, 40vw, 460px); object-fit:cover}
+    .hero__copy h1{font-size:var(--fs-xxl)}
+    .hero__copy p{color:var(--sub); font-size:var(--fs-md)}
+    .hero__cta{display:flex; flex-wrap:wrap; gap:12px}
+    @media (min-width:768px){
+      .hero__wrap{grid-template-columns:1.1fr .9fr; align-items:center}
+    }
+
+    /* セクション */
+    section{padding-block:var(--space-lg); border-bottom:1px solid var(--line)}
+    .lead{font-size:var(--fs-md); color:var(--sub)}
+    .grid-2{display:grid; gap:var(--space)}
+    @media (min-width:768px){ .grid-2{grid-template-columns:repeat(2,1fr)} }
+
+    .card{background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:var(--space); box-shadow:var(--shadow)}
+
+    /* ギャラリー（2→3→4列） */
+    .gallery{display:grid; gap:12px; grid-template-columns:repeat(2,1fr)}
+    .gallery img{border-radius:12px; border:1px solid var(--line)}
+    @media (min-width:768px){ .gallery{grid-template-columns:repeat(3,1fr)} }
+    @media (min-width:1024px){ .gallery{grid-template-columns:repeat(4,1fr)} }
+
+    /* フロー（アイコン＋説明） */
+    .steps{display:grid; gap:14px}
+    .step{display:grid; grid-template-columns:48px 1fr; gap:12px; align-items:start}
+    .step__num{width:48px; height:48px; border-radius:12px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff; display:grid; place-items:center; font-weight:700; box-shadow:var(--shadow)}
+    @media (min-width:480px){ .steps{grid-template-columns:1fr 1fr} .step{grid-template-columns:48px 1fr} }
+    @media (min-width:1024px){ .steps{grid-template-columns:1fr 1fr} }
+
+    /* FAQ */
+    details{background:#fff; border:1px solid var(--line); border-radius:12px; padding:14px 16px}
+    details+details{margin-top:10px}
+    summary{cursor:pointer; font-weight:700; color:#2d3a34}
+    details[open]{box-shadow:var(--shadow)}
+
+    /* フッター＆スマホ固定CTA */
+    .site-footer{padding-block:calc(var(--space-lg) * .8)}
+    .sns{display:flex; gap:12px; flex-wrap:wrap}
+    .bottom-cta{
+      position:fixed; left:0; right:0; bottom:0; z-index:95; display:flex; justify-content:center; padding:10px;
+      background:linear-gradient(to top, rgba(250,247,242,.95), rgba(250,247,242,.6));
+      border-top:1px solid var(--line); backdrop-filter:blur(6px)
+    }
+    .bottom-cta .btn{width:min(640px,92vw)}
+    @media (min-width:768px){ .bottom-cta{display:none} }
+
+    /* フェードイン */
+    .reveal{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease}
+    .reveal.is-visible{opacity:1; transform:none}
+    @media (prefers-reduced-motion:reduce){
+      .reveal{opacity:1; transform:none}
+      .btn,.btn-ghost{transition:none}
+    }
+
+    /* フォーム（100%幅＆親に追従） */
+    input, select, textarea{
+      font:inherit; width:100%; padding:12px; border:1px solid var(--line); border-radius:10px; background:#fff;
+    }
+    label{font-size:var(--fs-md)}
+    .row{display:grid; gap:10px}
+    @media (min-width:480px){ .row{grid-template-columns:1fr 1fr} }
+  </style>
+</head>
+<body>
+  <!-- ===== Header ===== -->
+  <header class="site-header" aria-label="ヘッダー">
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand__logo" aria-hidden="true"></div>
+        <div class="brand__name">秋月ヒーリングセラピー</div>
+      </div>
+
+      <!-- 小画面：ハンバーガー -->
+      <button class="menu-toggle" aria-label="メニューを開閉" aria-expanded="false" aria-controls="menu">☰</button>
+
+      <!-- 768px以上：インライン -->
+      <nav class="nav__links nav__inline" id="menu" aria-label="サイト内リンク">
+        <a class="tag" href="/index.html">TOP</a>
+        <a class="tag" href="/lp-fukuoka.html">福岡（天神・姪浜）</a>
+        <a class="tag" href="/lp-pillow.html">ソエルピロー</a>
+        <a class="btn" href="#reserve">予約（1週間前まで）</a>
+      </nav>
+    </div>
+
+    <!-- 767px以下：スライドアップメニュー -->
+    <nav class="nav__links" id="menu-drawer" aria-label="モバイルメニュー">
+      <a class="tag" href="/index.html">TOP</a>
+      <a class="tag" href="/lp-fukuoka.html">福岡（天神・姪浜）</a>
+      <a class="tag" href="/lp-pillow.html">ソエルピロー</a>
+      <a class="btn" href="#reserve">予約（1週間前まで）</a>
+    </nav>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" aria-label="ヒーロー">
+    <div class="container hero__wrap">
+      <div class="hero__visual reveal" role="img" aria-label="秋月の森と朝霧の情景">
+        <picture>
+          <source srcset="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop&fm=webp" type="image/webp">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop" alt="秋月の森に差し込む光" loading="eager" fetchpriority="high">
+        </picture>
+      </div>
+      <div class="hero__copy reveal">
+        <span class="tag">完全予約制（1週間前まで）</span>
+        <h1>静寂が、あなたを包む。</h1>
+        <p class="lead">木々のざわめき、風の香り、柔らかな光。<br>心が“余白”を取り戻す、秋月のヒーリングセラピー。</p>
+        <div class="hero__cta">
+          <a class="btn" href="#reserve" aria-label="予約セクションへ移動">ご予約はこちら</a>
+          <a class="btn-ghost" href="#concept" aria-label="コンセプトへ移動">コンセプトを読む</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Concept ===== -->
+  <section id="concept" class="reveal" aria-label="コンセプト">
+    <div class="container grid-2">
+      <div>
+        <h2 style="font-size:var(--fs-xl)">心の余白に、風が通う。</h2>
+        <p>ここは「なにもしない」を大切にする場所。街の速度から一歩離れ、静かな時間の流れに身をゆだねる——そんな体験を、秋月の自然とともに。</p>
+        <p>セッションの内容は季節やあなたの状態に寄り添い、音・香・やわらかなタッチ、そして呼吸。過不足なく、ただ“整う”。</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">セッションのキーワード</h3>
+        <ul style="margin:0 0 0 1.1em">
+          <li>音の揺らぎ（音叉・環境音）</li>
+          <li>香のレイヤー（淡い香りで意識をほどく）</li>
+          <li>やわらかなタッチ（手・重み・間）</li>
+          <li>呼吸と静寂（マインドフルな時間）</li>
+        </ul>
+        <p class="lead" style="margin:.6rem 0 0">※内容は後から更新しやすい可変設計です。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Reservation Policy ===== -->
+  <section id="policy" class="reveal" aria-label="ご予約について">
+    <div class="container grid-2">
+      <div>
+        <h2 style="font-size:var(--fs-xl)">ご予約について</h2>
+        <p class="lead">本セラピーは<strong>完全予約制</strong>です。<strong>ご予約は実施日の1週間前まで</strong>にお願いいたします。</p>
+        <ul style="margin:0 0 0 1.1em">
+          <li>受付時間：<strong>10:00〜16:00（最終開始 14:00）</strong></li>
+          <li>キャンセル：<strong>3日前まで無料</strong>（以降は50%）</li>
+          <li>当日の電話対応はできません（ヒーリング中のため）</li>
+          <li>場所の詳細は<strong>ご予約確定後にご案内</strong>します</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">持ち物・服装</h3>
+        <ul style="margin:0 0 0 1.1em">
+          <li>動きやすい温かな服装（季節により羽織を推奨）</li>
+          <li>必要であれば飲み物（温かいお茶のご用意もあります）</li>
+          <li>香りが苦手な方は事前にお知らせください</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Flow ===== -->
+  <section id="flow" class="reveal" aria-label="体験の流れ">
+    <div class="container">
+      <h2 style="font-size:var(--fs-xl)">体験の流れ</h2>
+      <div class="steps" style="margin-top:14px">
+        <div class="step">
+          <div class="step__num">1</div>
+          <div><strong>ご到着</strong><br>深呼吸をひとつ。空気と光に、身体をならしていきます。</div>
+        </div>
+        <div class="step">
+          <div class="step__num">2</div>
+          <div><strong>ヒアリング</strong><br>今日のからだと心の声を、短く静かに聴きます。</div>
+        </div>
+        <div class="step">
+          <div class="step__num">3</div>
+          <div><strong>セッション</strong><br>音・香・タッチ・呼吸。過不足なく“整う”ための時間。</div>
+        </div>
+        <div class="step">
+          <div class="step__num">4</div>
+          <div><strong>お茶の時間</strong><br>余韻を味わいながら、やさしく現実へと戻ります。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Gallery ===== -->
+  <section id="space" class="reveal" aria-label="秋月の空間紹介">
+    <div class="container">
+      <h2 style="font-size:var(--fs-xl)">秋月の空間</h2>
+      <p class="lead">風・光・緑・水。写真は一例です。実際の空間は季節とともに表情を変えます。</p>
+      <div class="gallery" style="margin-top:14px">
+        <picture>
+          <source srcset="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1200&auto=format&fit=crop&fm=webp" type="image/webp">
+          <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1200&auto=format&fit=crop" alt="木漏れ日の小径" loading="lazy">
+        </picture>
+        <picture>
+          <source srcset="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop&fm=webp" type="image/webp">
+          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop" alt="静かな川辺" loading="lazy">
+        </picture>
+        <picture>
+          <source srcset="https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=1200&auto=format&fit=crop&fm=webp" type="image/webp">
+          <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=1200&auto=format&fit=crop" alt="朝霧の森" loading="lazy">
+        </picture>
+        <picture>
+          <source srcset="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop&fm=webp" type="image/webp">
+          <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop" alt="縁側とお茶" loading="lazy">
+        </picture>
+        <picture>
+          <source srcset="https://images.unsplash.com/photo-1465146633011-14f8e0781093?q=80&w=1200&auto=format&fit=crop&fm=webp" type="image/webp">
+          <img src="https://images.unsplash.com/photo-1465146633011-14f8e0781093?q=80&w=1200&auto=format&fit=crop" alt="柔らかな陽の差す室内" loading="lazy">
+        </picture>
+        <picture>
+          <source srcset="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop&fm=webp" type="image/webp">
+          <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop" alt="森の小道" loading="lazy">
+        </picture>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Voices ===== -->
+  <section id="voices" class="reveal" aria-label="お客様の声">
+    <div class="container grid-2">
+      <div>
+        <h2 style="font-size:var(--fs-xl)">お客様の声</h2>
+        <p class="lead">「時間が止まるみたい」「呼吸が深くなった」「帰り道の景色が違って見えた」——身体は覚えています。</p>
+      </div>
+      <div class="card">
+        <p style="margin:.2rem 0"><strong>40代・女性</strong><br>音と触れ方が静かで、いつのまにか涙がでました。</p>
+        <p style="margin:.2rem 0"><strong>30代・男性</strong><br>考え事がすっと薄れて、森の匂いだけが残る感じ。</p>
+        <p style="margin:.2rem 0"><strong>50代・女性</strong><br>なにもしない時間が、いちばん贅沢だと思いました。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Reserve ===== -->
+  <section id="reserve" class="reveal" aria-label="予約フォーム">
+    <div class="container grid-2">
+      <div>
+        <h2 style="font-size:var(--fs-xl)">ご予約（1週間前まで）</h2>
+        <p class="lead">以下のフォームよりお申し込みください。<br><code style="font-family:ui-monospace">希望日</code>は<strong>本日から7日後以降</strong>のみ選択できます。</p>
+        <p style="margin:.4rem 0 0">※自動返信メールの受信設定をご確認ください。<br>※場所の詳細はご予約確定後にお知らせします。</p>
+      </div>
+      <form class="card" action="https://example.com/api/reserve" method="post" id="reserveForm" novalidate>
+        <label>お名前<span aria-hidden="true"> *</span><br>
+          <input type="text" name="name" required placeholder="山田 花子">
+        </label>
+        <div style="height:10px"></div>
+        <label>メールアドレス<span aria-hidden="true"> *</span><br>
+          <input type="email" name="email" required placeholder="you@example.com" inputmode="email">
+        </label>
+        <div style="height:10px"></div>
+
+        <div class="row">
+          <label>希望日<span aria-hidden="true"> *</span><br>
+            <input type="date" name="date" required id="dateField">
+          </label>
+          <label>時間帯<br>
+            <select name="time">
+              <option value="10:00">10:00</option>
+              <option value="12:00">12:00</option>
+              <option value="14:00">14:00（最終）</option>
+            </select>
+          </label>
+        </div>
+
+        <div style="height:10px"></div>
+        <label>ご希望・メッセージ<br>
+          <textarea name="message" rows="4" placeholder="香りが苦手／静かめ希望 などあれば"></textarea>
+        </label>
+        <div style="display:flex;gap:10px;align-items:center;margin-top:12px">
+          <input id="agree" type="checkbox" required>
+          <label for="agree" style="font-size:var(--fs-sm)">予約規約とキャンセルポリシーに同意します</label>
+        </div>
+        <div style="height:14px"></div>
+        <button type="submit" class="btn" style="width:100%">この内容で申し込む</button>
+        <p id="formNote" class="lead" style="margin:.6rem 0 0; color:#7b6a50"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== Access / FAQ ===== -->
+  <section id="access" class="reveal" aria-label="アクセスとFAQ">
+    <div class="container grid-2">
+      <div>
+        <h2 style="font-size:var(--fs-xl)">アクセス</h2>
+        <p class="lead">福岡県朝倉市 秋月エリア（詳細はご予約確定後にご案内）<br>駐車場あり。公共交通をご利用の方は事前にご相談ください。</p>
+        <div class="hero__visual" aria-hidden="true">
+          <picture>
+            <source srcset="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1600&auto=format&fit=crop&fm=webp" type="image/webp">
+            <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1600&auto=format&fit=crop" alt="" loading="lazy">
+          </picture>
+        </div>
+      </div>
+      <div>
+        <h2 style="font-size:var(--fs-xl)">よくある質問</h2>
+        <details>
+          <summary>予約は直前でもできますか？</summary>
+          <div>恐れ入りますが、自然環境・空間準備の都合上、<strong>実施日の1週間前まで</strong>の受付としています。</div>
+        </details>
+        <details>
+          <summary>香りが苦手です。対応できますか？</summary>
+          <div>はい。香りの使用は任意です。事前にフォームへご記入ください。</div>
+        </details>
+        <details>
+          <summary>雨天時はどうなりますか？</summary>
+          <div>屋内で静かなセッションへ切り替えます。危険が予測される場合は日程変更をご相談します。</div>
+        </details>
+        <details>
+          <summary>所要時間は？料金は？</summary>
+          <div>所要90〜120分を想定。料金は内容確定後、当ページでご案内します。</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container grid-2">
+      <div>
+        <h3 style="margin-top:0">秋月ヒーリングセラピー</h3>
+        <p class="lead">— 静寂が、あなたを包む。</p>
+        <div class="sns" aria-label="SNSリンク">
+          <a class="tag" href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+          <a class="tag" href="https://www.threads.net/" target="_blank" rel="noopener">Threads</a>
+          <a class="tag" href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
+        </div>
+      </div>
+      <div>
+        <p style="margin:.2rem 0 0; color:var(--sub)">© <span id="year"></span> Hogushiya Kida / Sowell. All rights reserved.</p>
+        <p style="margin:.2rem 0 0; color:var(--sub)">姉妹ページ：<a href="/lp-fukuoka.html">福岡（天神・姪浜）</a>｜<a href="/lp-pillow.html">ソエルピロー</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== Mobile bottom CTA (スマホのみ) ===== -->
+  <div class="bottom-cta" role="region" aria-label="下部固定 行動ボタン">
+    <a class="btn" href="#reserve">予約（1週間前まで）</a>
+  </div>
+
+  <!-- ===== Scripts ===== -->
+  <script>
+    // 年表示
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ハンバーガー
+    const toggle = document.querySelector('.menu-toggle');
+    const drawer = document.getElementById('menu-drawer');
+    if(toggle && drawer){
+      toggle.addEventListener('click', ()=>{
+        const open = drawer.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+
+    // フェードイン
+    const io = 'IntersectionObserver' in window
+      ? new IntersectionObserver((entries)=>{
+          entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target);} });
+        }, {threshold:.12})
+      : null;
+    document.querySelectorAll('.reveal').forEach(el=>{
+      if(io){ io.observe(el); } else { el.classList.add('is-visible'); }
+    });
+
+    // 予約日：本日から7日後のみmin（ローカルTZ前提）
+    (function setMinDate(){
+      const f = document.getElementById('dateField');
+      if(!f) return;
+      const now = new Date();
+      const min = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 7);
+      const toYmd = d => {
+        const tzOffset = d.getTimezoneOffset(); // ずれ防止
+        const local = new Date(d.getTime() - tzOffset*60000);
+        return local.toISOString().slice(0,10);
+      };
+      f.min = toYmd(min);
+      f.value = toYmd(min);
+      const note = document.getElementById('formNote');
+      if(note){ note.textContent = `最短のご予約可能日は ${min.getFullYear()}年${min.getMonth()+1}月${min.getDate()}日 です。`; }
+    })();
+
+    // 簡易バリデーション
+    document.getElementById('reserveForm')?.addEventListener('submit', function(e){
+      const form = e.currentTarget;
+      if(!form.checkValidity()){
+        e.preventDefault();
+        alert('未入力の項目があります。内容をご確認ください。');
+      }
+    });
+  </script>
+
+  <!-- 構造化データ（任意） -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LocalBusiness",
+    "name":"秋月ヒーリングセラピー",
+    "areaServed":"Asakura, Fukuoka, Japan",
+    "address": {
+      "@type":"PostalAddress",
+      "addressRegion":"Fukuoka",
+      "addressLocality":"Asakura-shi Akizuki"
+    },
+    "url":"https://example.com/lp-akizuki",
+    "image":"https://example.com/og_akizuki.jpg",
+    "description":"秋月の自然に包まれる完全予約制ヒーリングセラピー。ご予約は1週間前まで受付。"
+  }
+  </script>
+</body>
+</html>
